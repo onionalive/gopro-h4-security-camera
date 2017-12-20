@@ -9,9 +9,9 @@ Supports:
 
 ### Prerequisites
 
-Node
-npm
-babel
+- Node
+- npm
+- babel
 
 ### Installing
 
