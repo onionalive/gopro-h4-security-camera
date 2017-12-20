@@ -3,6 +3,7 @@
 /* jshint -W079 */
 var gulp 				= require('gulp');
 var $           = require('gulp-load-plugins')();
+var util = require('gulp-util');
 
 var rimraf 			= require('rimraf');
 var browserify  = require('browserify');
@@ -17,6 +18,31 @@ var dist = `dist/`;
 /* Clear Cache */
 gulp.task('cacheclear', function () {
   $.cache.clearAll();
+});
+
+/* Stylesheets */
+gulp.task('styles', function () {
+	const paths = [];
+
+	var out = gulp.src('src/scss/main.scss')
+		.pipe(util.noop())
+		// Enable globbing in SASS files
+		.pipe($.sassGlob())
+		// Compile SASS
+		.pipe($.sass({
+			style: 'expanded',
+			includePaths: paths
+		}))
+		// Log errors to terminal
+		.on('error', $.sass.logError)
+		// Raise notification if we hit an error
+		.on('error', function (e) {
+			$.notify().write(e);
+		})
+		// Minify CSS (in production only)
+		.pipe($.csso())
+		// Write CSS
+		.pipe(gulp.dest(dist + 'css'));	
 });
 
 
@@ -43,7 +69,8 @@ gulp.task('javascript', function () {
 
 /** Build */
 gulp.task('build', [
-	'javascript'
+	'javascript',
+	'styles'
 ]);
 
 gulp.task('default', ['build']);
