@@ -7,14 +7,12 @@ var $           = require('gulp-load-plugins')();
 var rimraf 			= require('rimraf');
 var browserify  = require('browserify');
 
-var runSequence	= require('run-sequence');
 var vsource		 	= require('vinyl-source-stream');
 var vbuffer		 	= require('vinyl-buffer');
-var pngquant		= require('imagemin-pngquant');
 var babelify    = require('babelify');
 
 
-var dist = `dist/s`;
+var dist = `dist/`;
 
 /* Clear Cache */
 gulp.task('cacheclear', function () {
@@ -23,7 +21,7 @@ gulp.task('cacheclear', function () {
 
 
 /* Compile Javascript */
-gulp.task('javascript', ['eslint'], function () {
+gulp.task('javascript', function () {
 	var b = browserify({
 		transform: [babelify.configure({
 			presets: ["es2015"]
@@ -39,20 +37,8 @@ gulp.task('javascript', ['eslint'], function () {
 			$.notify().write(e);
 		});
 
-	out.pipe($.sourcemaps.init({
-			loadMaps: true,
-		})).pipe($.sourcemaps.write('./'))
-		.pipe(gulp.dest(dist + 'js'));
-
-
 	return out.pipe($.buffer())
 		.pipe(gulp.dest(dist + 'js'))
-		.pipe($.rev.manifest(dist + 'js/manifest.json', {
-			merge: true,
-			base: '',
-		}))
-		.pipe(gulp.dest(''));
-
 });
 
 /** Build */
