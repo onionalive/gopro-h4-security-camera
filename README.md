@@ -33,11 +33,6 @@ I suggest setting up mamp, wamp, or which ever local server environment you pref
 
 * [goproh4](https://github.com/citolen/goproh4) - The GoPro Hero 4 api
 
-## Authors
-
-* **Stephen Ritchie** - *Initial work* - [onionalive](https://github.com/onionalive)
-
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
