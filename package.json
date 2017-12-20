@@ -4,7 +4,7 @@
   "description": "Use GoPro Hero 4 as a security camera.\r Supports: \r - Live Stream\r - Recording\r - Take Photo\r - Motion Detection",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "npm i && gulp"
   },
   "repository": {
     "type": "git",
