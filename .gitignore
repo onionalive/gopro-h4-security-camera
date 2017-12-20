@@ -18,6 +18,9 @@ lib-cov
 node_modules/
 jspm_packages/
 
+# Dist Directory
+dist/
+
 # dotenv environment variables file
 .env
 
