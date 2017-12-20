@@ -27,7 +27,7 @@ You will need to put your wifi credentials and GoPro access credentials into the
 ### Viewing
 
 In your browser, navigate to where this repo is located.
-I suggest setting up mamp, wamp, or which ever you local server environment you prefer. Clone this repo to the html/www directory. This way you can just navigate to [http://localhost/gopro-h4-security-camera/](http://localhost/gopro-h4-security-camera/)
+I suggest setting up mamp, wamp, or which ever local server environment you prefer. Clone this repo to the html/www directory. This way you can just navigate to [http://localhost/gopro-h4-security-camera/](http://localhost/gopro-h4-security-camera/)
 
 ## Built With
 
