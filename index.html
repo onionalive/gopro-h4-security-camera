@@ -13,12 +13,21 @@
 			<h1>GoPro Cameras</h1>
 	</div>
 	<main>
-		<button class='turn-on'>Turn On</button>
-		<button class='turn-off'>Turn Off</button>
-		<button class='show-status'>Show Status</button>
-		<button class='show-media'>Show Media</button>
-		<span class='camera-status'></span>
-		<span class='media-list'></span>
+		<div class='buttons'>
+			<button class='turn-on'>Turn On</button>
+			<button class='turn-off'>Turn Off</button>
+			<button class='show-status'>Show Status</button>
+			<button class='show-media'>Show Media</button>
+		</div>
+		<div class='rhs-sidebar'>
+			<ul class='camera-status'>
+				<li class='broadcastip'>BroadcastIP:<span></span></li>
+				<li class='ip'>ip:<span></span></li>
+				<li class='mac'>mac:<span></span></li>
+				<li class='ready'>Ready:<span></span></li>
+			</ul>
+			<span class='media-list'></span>				
+		</div>
 	</main>
   <script src="dist/js/scripts.min.js"></script>
 </body>

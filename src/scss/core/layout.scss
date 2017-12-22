@@ -1,0 +1,12 @@
+body {
+	main {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+
+		.rhs-sidebar {
+			border-left: 1px solid $c-black;
+			padding: 5px;
+		}
+	}
+}

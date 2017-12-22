@@ -21,3 +21,18 @@ p,
 a {
 	font-size: 1.5rem;
 }
+
+ul {
+	li {
+		font-size: 1.6rem;
+		color: $c-black;
+		font-weight: 600;
+
+		span {
+			font-weight: 300;
+			color: $c-grey;
+			font-size: 1.4rem;
+			margin-left: 5px;
+		}
+	}
+}
