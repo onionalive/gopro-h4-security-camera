@@ -11,7 +11,7 @@ class goPro {
 	}
 
 	init() {
-		this.camera.ready();
+		// this.camera.ready();
 		this.getCameraData();
 		this.clickEventhandlers();
 	}
@@ -30,9 +30,6 @@ class goPro {
 	}
 
 	clickEventhandlers() {
-		$('.turn-on').on('click', () => {
-			this.camera.powerOn();
-		});
 
 		$('.turn-off').on('click', () => {
 			this.camera.powerOff();
