@@ -1,4 +1,5 @@
 import GoPro from 'goproh4';
+
 /**
  * This is the goPro class
  */
@@ -11,7 +12,6 @@ class goPro {
 	}
 
 	init() {
-		// this.camera.ready();
 		this.getCameraData();
 		this.clickEventhandlers();
 	}
@@ -30,36 +30,103 @@ class goPro {
 	}
 
 	clickEventhandlers() {
+		$('.turn-on').on('click', () => {
+			this.turnCameraOn();
+		});
 
 		$('.turn-off').on('click', () => {
-			this.camera.powerOff();
+			this.turnCameraOff();
 		});
 
 		$('.show-status').on('click', () => {
-			this.getCameraData();
-			console.log(this.camera);
+			this.getStatus();
+		});
+
+		$('.take-picture').on('click', () => {
+			this.takePicture();
 		});
 
 		$('.show-media').on('click', () => {
-			this.camera.listMedia().then((result) => {
-				// Clear media
-				$('.media-list').text('');
-				this.media = [];
-
-
-				this.media.push(result);
-			});
+			const media = this.getMedia();
+			$('.media-list').text('');
+			console.log(media);
 
 			// needs to be updated to run this only after above has finished
-			if (this.media.length >0 ) {
-				$('.media-list').text(this.media);
+			if (media !== undefined && media.length > 0 ) {
+				$('.media-list').text(media);
 			} else {
 				$('.media-list').text('No media or no SD card');
 			}
 		})
 	}
 
+	getStatus() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/gopro_status',
+			success: (res) => {
+				console.log(res);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	}
 
+	getMedia() {
+		let media = [];
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/get_media',
+			success: (res) => {
+				media = res;
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		});
+
+		return media;
+	}
+
+	turnCameraOff() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/gopro_off',
+			success: (res) => {
+				console.log(res);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	}
+
+	turnCameraOn() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/gopro_on',
+			success: (res) => {
+				console.log(res);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	}
+
+	takePicture() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/take_picture',
+			success: (res) => {
+				console.log(res);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	}
 }
 
 export default goPro;
