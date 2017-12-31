@@ -22,7 +22,6 @@ npm run setup
 ```
 
 This should install all dependencies, compile all code and setup your ennvironment.
-You will need to put your wifi credentials and GoPro access credentials into the .env file.
 
 ### Connecting To Your Go Pro
 
