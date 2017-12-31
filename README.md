@@ -80,7 +80,7 @@ In your browser, navigate to [http://localhost:3000](http://localhost:3000)
 - get view media and list media functional
 - get start and stop recording functional
 - get live stream functional
-..- set up motion detection
+- set up motion detection
 
 ## Built With
 
