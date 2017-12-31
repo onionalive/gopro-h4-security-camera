@@ -37,11 +37,6 @@ This should be it! By default - the GoPro connects to 10.5.5.9. This repo (using
 When connected, you can manually view your GoPro files by navigating to [10.5.5.9](http://10.5.5.9/)
 Additionally you can view your GoPro settings by navigating to [10.5.5.9/gp/gpControl](http://10.5.5.9/gp/gpControl)
 
-*errors you might run into*
-If you encounter CORS (cross origin recourse || no ExtensionAllow-Control-Allow-Origin) and are unable to get the data from the goPro into javascript, the easiest solution is to change the flags in your browser or install an extension that allows you to toggle this.
-
-[The plugin I used here](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en)
-
 ### Connecting to multiple gopros
 
 *This setction is untested and a work in progess*
