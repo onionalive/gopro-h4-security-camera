@@ -69,10 +69,20 @@ cameraTwo = new GoPro.Camera({
 
 ### Viewing
 
-In your browser, navigate to where this repo is located.
-I suggest setting up mamp, wamp, or which ever local server environment you prefer. Clone this repo to the html/www directory. This way you can just navigate to [http://localhost/gopro-h4-security-camera/](http://localhost/gopro-h4-security-camera/)
+Compile all the code
+```
+gulp
+```
 
-Livestream looks to be a bit of work, haven't touched this yet.
+This runs the default gulp function in `gulpfile.babel.js` and outputs to the /dist directory.
+
+Then, serve the files using express. From the root project directory run
+
+```
+node app.js
+```
+
+In your browser, navigate to [http://localhost:3000](http://localhost:3000)
 
 ## Built With
 
