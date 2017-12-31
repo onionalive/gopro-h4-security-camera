@@ -10,8 +10,6 @@ Supports:
 ### Prerequisites
 
 - Node
-- npm
-- babel
 
 ### Installing
 
