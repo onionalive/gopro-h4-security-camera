@@ -7,11 +7,11 @@ Supports:
 - Take Photo
 - Motion Detection
 
-### Prerequisites
+## Prerequisites
 
 - Node
 
-### Installing
+## Installing
 
 Git clone and run install command
 
@@ -21,7 +21,7 @@ npm run setup
 
 This should install all dependencies, compile all code and setup your ennvironment.
 
-### Connecting To Your Go Pro
+## Connecting To Your Go Pro
 
 There are a few steps needed here since your GoPro Hero 4 does not connect directly to your wifi.
 
@@ -35,7 +35,7 @@ This should be it! By default - the GoPro connects to 10.5.5.9. This repo (using
 When connected, you can manually view your GoPro files by navigating to [10.5.5.9](http://10.5.5.9/)
 Additionally you can view your GoPro settings by navigating to [10.5.5.9/gp/gpControl](http://10.5.5.9/gp/gpControl)
 
-### Connecting to multiple gopros
+## Connecting to multiple gopros
 
 *This setction is untested and a work in progess*
 
@@ -59,7 +59,7 @@ cameraTwo = new GoPro.Camera({
 ```
 
 
-### Viewing
+## Viewing
 
 Compile all the code
 ```
