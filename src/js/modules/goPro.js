@@ -46,18 +46,44 @@ class goPro {
 			this.takePicture();
 		});
 
-		$('.show-media').on('click', () => {
-			const media = this.getMedia();
-			$('.media-list').text('');
-			console.log(media);
+		$('.take-video').on('click', () => {
+			this.takeVideo();
+		});
 
-			// needs to be updated to run this only after above has finished
-			if (media !== undefined && media.length > 0 ) {
-				$('.media-list').text(media);
+		$('.show-media').on('click', () => {
+			// Clear Media
+			$('.media-list').text('');
+			this.listMedia(); 
+		})
+	}
+
+	listMedia() {
+		this.camera.listMedia().then((result) => {  
+			const media = result.media;
+
+			let fileLinks = '';
+	
+			for (let directory of media) {
+				let directoryName = directory.d;
+				for (let file of directory.fs) {
+					fileLinks += this.createFileLink(directoryName, file.n);
+				}
+			}
+	
+			if (fileLinks !== undefined && fileLinks.length > 0 ) {
+				$('.media-list').append(fileLinks);
 			} else {
 				$('.media-list').text('No media or no SD card');
 			}
-		})
+		});
+	}
+
+	createFileLink(directoryName, fileName) {
+		const fileLink = `
+			<a target='_blank' href='http://10.5.5.9/videos/DCIM/${directoryName}/${fileName}'>${fileName}</a>
+		`;
+
+		return fileLink;
 	}
 
 	getStatus() {
@@ -71,22 +97,6 @@ class goPro {
 				console.log(err);
 			}
 		})
-	}
-
-	getMedia() {
-		let media = [];
-		$.ajax({
-			type: 'POST',
-			url: 'http://localhost:3000/get_media',
-			success: (res) => {
-				media = res;
-			},
-			error: (err) => {
-				console.log(err);
-			}
-		});
-
-		return media;
 	}
 
 	turnCameraOff() {
@@ -119,6 +129,19 @@ class goPro {
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost:3000/take_picture',
+			success: (res) => {
+				console.log(res);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	}
+
+	takeVideo() {
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost:3000/take_video',
 			success: (res) => {
 				console.log(res);
 			},

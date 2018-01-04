@@ -15,7 +15,11 @@ camera = new goPro.Camera({
 
 // Grab goPro Status
 app.post('/gopro_status', function(req, res) {
-	res.send(camera);
+  var cameraStatus = [];
+  camera.status().then(function (status) {
+    cameraStatus.push(status);
+  });
+	res.send(camera.status());
 });
 
 // Turn Camera On
@@ -51,13 +55,33 @@ app.post('/take_picture', function(req, res) {
   res.send(camera);
 });
 
-// Get Media on GoPro Device
-app.post('/get_media', function(req, res) {
-  var media = [];
-  camera.listMedia().then(function(result) {
-    media.push(result);
-  });
-  res.send(media);
+// Take Video On Camera
+app.post('/take_video', function(req, res) {
+  // Set camera mode
+  camera.mode(goPro.Settings.Modes.Video, goPro.Settings.Submodes.Video.Video)
+  // Set camera resolution
+  .then(function () {
+      return camera.set(goPro.Settings.VIDEO_RESOLUTION, goPro.Settings.VideoResolution.R1080S)
+  })
+  // Set camera framerate
+  .then(function () {
+      return camera.set(goPro.Settings.VIDEO_FPS, goPro.Settings.VideoFPS.F60)
+  })
+  
+  // Begin recording
+  .then(function () {
+      return camera.start()
+  })
+  
+  // Wait 30s
+  .delay(30000)
+  
+  // Stop recording
+  .then(function () {
+      return camera.stop()
+  })
+  // Return Camera Status
+  res.send(camera);
 });
 
 // start app
